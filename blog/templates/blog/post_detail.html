@@ -17,7 +17,11 @@
 
 {% endif %}
         <h1>{{ post.title }}</h1>
-        <p>{{ post.text|linebreaks }}</p>
+        {% if post.model_pic.url != null %}
+  <p><img src= {{ post.model_pic.url }} height="250" /> </p>
+  {% endif %}
+
+        <p>{{ post.text|urlize|linebreaks }}</p>
     </div>
 
 <hr>
@@ -26,7 +30,7 @@
         <div class="comment">
             <div class="date">{{ comment.created_date }}</div>
             <strong>{{ comment.author }}</strong>
-            <p>{{ comment.text|linebreaks }}</p>
+            <p>{{ comment.text|urlize|linebreaks }}</p>
         </div>
     {% empty %}
         <p>No comments here yet :(</p>
